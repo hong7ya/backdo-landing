@@ -42,10 +42,10 @@ export default function Guide() {
           description={[
             { color: "success", log: "https://landing.backdo.site 에서 webSocketID를 입력해주세요." },
             { color: "success", log: "👇" },
-            {color: "success", log: "8693A0BB7F4A2A68F1B6EF454C7A6288"},
-            {color: "success", log: "모든 디버깅 작업 종료 후, 다음 명령어를 입력해 안전하게 프로세스를 종료해주세요."},
-            {color: "success", log: "👇"},
-            {color: "success", log: "npm run close 97771"}
+            { color: "success", log: "8693A0BB7F4A2A68F1B6EF454C7A6288" },
+            { color: "success", log: "모든 디버깅 작업 종료 후, 다음 명령어를 입력해 안전하게 프로세스를 종료해주세요." },
+            { color: "success", log: "👇" },
+            { color: "success", log: "npm run close 97771" }
           ]}
         />
         <Step
