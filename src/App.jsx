@@ -1,3 +1,4 @@
+import WebSocketForm from "./WebSocketForm";
 import logoSrc from "./assets/BackDo.png";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
                     순수 함수로 작업 중이셨다면, 한번의 버튼 클릭으로 해결할 수
                     있어요 👍
                   </p>
+                </div>
+                <div>
+                  <WebSocketForm />
                 </div>
                 <p className="py-10">
                   🚨 현재 버전은 for 문, if 문, 함수 선언문 대응 가능해요
