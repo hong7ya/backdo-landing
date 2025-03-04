@@ -1,37 +1,36 @@
 import WebSocketForm from "./WebSocketForm";
 import logoSrc from "./assets/BackDo.png";
+import playSampleSrc from "./assets/playSample.gif";
 
 function App() {
   return (
     <>
-      <header className="h-28 bg-base-200">
+      <header className="h-[72px] bg-base-200 px-3 py-1 flex items-center">
         <img
-          className="mask mask-squircle w-24 m-2 drop-shadow-lg"
+          className="mask mask-squircle w-14 m-2 drop-shadow-lg"
           src={logoSrc}
         />
+        <span className="text-xl">BackDo</span>
       </header>
       <main>
         <section>
-          <div className="hero bg-base-200 min-h-[calc(100vh-112px)]">
-            <div className="hero-content text-center">
-              <div className="max-w-4xl">
-                <h1 className="text-5xl font-bold">
-                  한 번 지나친 이전 줄로 이동시켜 주는 디버거
+          <div className="hero bg-base-200 min-h-[calc(100vh-72px)]">
+            <div className="hero-content lg:flex-row-reverse">
+              <div>
+                <h1 className="text-5xl font-bold text-primary">
+                  더 쉽고, 빠르게! 뒤로 가는 디버거
                 </h1>
-                <div className="py-10 text-xl flex flex-col gap-4">
-                  <p>debugger 사용시에 너무 빠르게 step을 누르셨나요?</p>
-                  <p>이전 line에 있을 때의 모습을 보고 싶으신가요?</p>
-                  <p>
-                    순수 함수로 작업 중이셨다면, 한번의 버튼 클릭으로 해결할 수
-                    있어요 👍
-                  </p>
-                </div>
-                <div>
+                <p className="py-6">
+                  줄 숫자를 기억하고, 스크립트 전체를 다시 실행하고, breakpoint를 주고, resume 하고, step 누르고...
+                  <br />
+                  더 이상 위의 작업 없이 <span className="text-info">시간</span>을 <span className="text-info">단축</span>해요. 🚴
+                </p>
+                <div className="py-6">
                   <WebSocketForm />
                 </div>
-                <p className="py-10">
-                  🚨 현재 버전은 for 문, if 문, 함수 선언문 대응 가능해요
-                </p>
+                <div>
+                  <img className="rounded-xl drop-shadow-xl h-full" src={playSampleSrc}/>
+                </div>
               </div>
             </div>
           </div>
