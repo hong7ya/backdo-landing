@@ -18,11 +18,11 @@ export default function WebSocketForm() {
       onSubmit={(event) => event.preventDefault()}
       className="flex flex-row gap-2"
     >
-      <label className="input w-xl">
-        <span className="label">localhost:9222/devtools/page/</span>
+      <label className="input w-[450px]">
+        <span className="label">WebSocket ID</span>
         <input
           type="text"
-          placeholder="ID"
+          placeholder="8693A0BB7F4A2A68F1B6EF454C7A6288"
           value={webSocketID}
           onChange={(event) => setWebSocketID(event.target.value)}
         />
