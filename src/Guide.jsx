@@ -7,11 +7,12 @@ function Step({ title, command, description }) {
           <code>{command}</code>
         </pre>
         {description &&
-          description.map(({ color, log }) => {
+          description.map(({ color, log }, index) => {
             return (
               <pre
                 data-prefix=">"
                 className={`text-${color}`}
+                key={index}
               >
                 <code>{log}</code>
               </pre>
