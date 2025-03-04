@@ -14,7 +14,10 @@ export default function WebSocketForm() {
   }
 
   return (
-    <form onSubmit={(event) => event.preventDefault()} className="flex flex-row gap-2">
+    <form
+      onSubmit={(event) => event.preventDefault()}
+      className="flex flex-row gap-2"
+    >
       <label className="input w-xl">
         <span className="label">localhost:9222/devtools/page/</span>
         <input
