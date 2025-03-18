@@ -31,7 +31,7 @@ export default function Guide() {
       <div tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-1 w-[750px] p-2 shadow-sm h-[670px] flex-nowrap gap-3 drop-shadow-md">
         <Step
           title="STEP 1."
-          command="git clone --branch cli https://github.com/GoToPrevLine/server.git && cd server"
+          command="git clone https://github.com/GoToPrevLine/server.git && cd server"
         />
         <Step
           title="STEP 2."
