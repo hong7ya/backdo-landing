@@ -20,7 +20,7 @@ function App() {
             <div className="hero-content lg:flex-row-reverse">
               <div>
                 <h1 className="text-5xl font-bold text-primary">
-                  더 쉽고, 빠르게! 뒤로 가는 디버거
+                  더 쉽고, 빠르게! 거꾸로 가는 디버거
                 </h1>
                 <p className="py-6">
                   줄 숫자를 기억하고, 스크립트 전체를 다시 실행하고,
