@@ -2,3 +2,7 @@
 @plugin "daisyui" {
   themes: nord --default;
 }
+
+:root {
+  background-color: var(--color-base-200);
+}

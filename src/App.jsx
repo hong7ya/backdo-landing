@@ -6,7 +6,7 @@ import playSampleSrc from "./assets/playSample.gif";
 function App() {
   return (
     <>
-      <header className="h-[72px] bg-base-200 px-3 py-1 flex items-center">
+      <header className="h-[72px] px-3 py-1 flex items-center">
         <img
           className="mask mask-squircle w-14 m-2 drop-shadow-lg"
           src={logoSrc}
@@ -16,7 +16,7 @@ function App() {
       </header>
       <main>
         <section>
-          <div className="hero bg-base-200 min-h-[calc(100vh-72px)]">
+          <div className="hero min-h-[calc(100vh-72px)]">
             <div className="hero-content lg:flex-row-reverse">
               <div>
                 <h1 className="text-5xl font-bold text-primary">
