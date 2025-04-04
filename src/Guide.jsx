@@ -25,7 +25,7 @@ function Step({ title, command, description }) {
 
 export default function Guide() {
   return (
-    <div className="dropdown dropdown-hover">
+    <div className="dropdown">
       {/* Safari has a CSS bug since 2008 that prevents button elements from being focused, so we use div tabindex="0" as a workaround. This approach is accessible with the addition of role="button" and functions consistently across all browsers. */}
       <div tabIndex={0} role="button" className="btn m-1">Guide</div>
       <div tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box z-1 w-[750px] p-2 shadow-sm h-[670px] flex-nowrap gap-3 drop-shadow-md">
