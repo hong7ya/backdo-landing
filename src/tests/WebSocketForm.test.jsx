@@ -20,3 +20,15 @@ test("입력창이 비워져 있을 경우, Get Started 버튼을 클릭하면 o
 
   unmount();
 });
+
+test("입력창에 WEBSOCKET_ID를 입력한 경우, Get Started 버튼을 클릭하면 디버거가 배포된 주소로 open이 호출된다", async () => {
+  const { unmount } = render(<WebSocketForm />);
+  const user = userEvent.setup();
+
+  await user.type(screen.getByRole("textbox", {name: "WebSocket ID"}), WEBSOCKET_ID);
+  await user.click(screen.getByRole("button", {name: "Get Started"}));
+
+  expect(open).toHaveBeenNthCalledWith(1, URL, "_blank");
+
+  unmount();
+});
