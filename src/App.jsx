@@ -1,7 +1,10 @@
 import Guide from "./Guide";
 import WebSocketForm from "./WebSocketForm";
 import logoSrc from "./assets/BackDo.png";
-import playSampleSrc from "./assets/playSample.gif";
+
+import playSampleMP4 from "./assets/playSample.mp4";
+import playSampleWEBM from "./assets/playSample.webm";
+
 
 function App() {
   return (
@@ -33,10 +36,10 @@ function App() {
                   <WebSocketForm />
                 </div>
                 <div>
-                  <img
-                    className="rounded-xl drop-shadow-xl h-full"
-                    src={playSampleSrc}
-                  />
+                  <video autoPlay loop muted playsInline>
+                    <source src={playSampleWEBM} type="video/webm"/>
+                    <source src={playSampleMP4} type="video/mp4"/>
+                  </video>
                 </div>
               </div>
             </div>
