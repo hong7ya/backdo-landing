@@ -1,20 +1,13 @@
-import Guide from "./Guide";
-import WebSocketForm from "./WebSocketForm";
-import logoSrc from "./assets/BackDo.png";
-
-import playSampleMP4 from "./assets/playSample.mp4";
-import playSampleWEBM from "./assets/playSample.webm";
-
+import Guide from "./components/Guide";
+import Logo from "./components/Logo";
+import Video from "./components/Video";
+import WebSocketForm from "./components/WebSocketForm";
 
 function App() {
   return (
     <>
       <header className="h-[72px] px-3 py-1 flex items-center">
-        <img
-          className="mask mask-squircle w-14 m-2 drop-shadow-lg"
-          src={logoSrc}
-        />
-        <span className="text-xl">BackDo</span>
+        <Logo />
         <Guide />
       </header>
       <main>
@@ -36,10 +29,7 @@ function App() {
                   <WebSocketForm />
                 </div>
                 <div>
-                  <video width="938" height="608" controls autoPlay loop muted playsInline>
-                    <source src={playSampleWEBM} type="video/webm"/>
-                    <source src={playSampleMP4} type="video/mp4"/>
-                  </video>
+                  <Video />
                 </div>
               </div>
             </div>
