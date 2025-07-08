@@ -36,7 +36,7 @@ function App() {
                   <WebSocketForm />
                 </div>
                 <div>
-                  <video width="938" height="608" autoPlay loop muted playsInline>
+                  <video width="938" height="608" controls autoPlay loop muted playsInline>
                     <source src={playSampleWEBM} type="video/webm"/>
                     <source src={playSampleMP4} type="video/mp4"/>
                   </video>
