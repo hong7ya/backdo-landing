@@ -115,6 +115,8 @@ BackDo는 resume 버튼으로 지나쳤다거나, step을 누르면서 지나쳤
 
 **테스트**
 
+[![vitest](https://img.shields.io/badge/vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![testinglibrary](https://img.shields.io/badge/testinglibrary-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white)](https://testing-library.com/)
 [![mocha](https://img.shields.io/badge/mocha-8D6748?style=for-the-badge&logo=mocha&logoColor=white)](https://mochajs.org/)
 [![chai](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)](https://www.chaijs.com/)
 
