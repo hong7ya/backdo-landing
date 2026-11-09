@@ -6,7 +6,7 @@ import Video from "./components/Video";
 function App() {
   return (
     <>
-      <header className="mx-auto flex h-[72px] max-w-7xl items-center gap-2 px-4">
+      <header className="mx-auto flex h-[72px] max-w-5xl items-center gap-2 px-4">
         <Logo />
       </header>
       <main>
@@ -45,38 +45,37 @@ function App() {
                 aria-labelledby="scenarios-heading"
                 className="grid gap-4"
               >
-                <h2
-                  id="scenarios-heading"
-                  className="text-lg font-semibold"
-                >
-                  다시 보고 싶은 코드를 이미 지나쳤을 때
-                </h2>
-                <div className="grid gap-6 lg:grid-cols-2">
-                  <article className="grid content-start gap-4">
-                    <h3 className="font-semibold">
-                      CLI 동작 하나가 여러 파일을 거칠 때
-                    </h3>
-                    <blockquote className="border-l-2 border-primary pl-4">
-                      “출력값이 이상한데… 아까 그 함수에서 뭘 넘겼지?”
-                    </blockquote>
-                    <p className="text-sm">
-                      Node.js에서 이미 반환한 함수와 다른 모듈로 돌아가, 지나온
-                      흐름을 이어서 살펴보세요.
-                    </p>
-                  </article>
-                  <article className="grid content-start gap-4">
-                    <h3 className="font-semibold">
-                      화면의 버그를 작은 코드로 좁혔을 때
-                    </h3>
-                    <blockquote className="border-l-2 border-primary pl-4">
-                      “이 데이터는 걸러져야 하는데, 왜 남았지?”
-                    </blockquote>
-                    <p className="text-sm">
-                      문제의 데이터와 함수를 Console에 넣고, 지나친 조건으로
-                      돌아가 확인하세요.
-                    </p>
-                  </article>
-                </div>
+                <details className="collapse collapse-arrow border border-base-300">
+                  <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
+                    <h2 id="scenarios-heading">이럴 때 사용해 보세요</h2>
+                  </summary>
+                  <div className="collapse-content grid gap-6 lg:grid-cols-2">
+                    <article className="grid content-start gap-4">
+                      <h3 className="font-semibold">
+                        CLI 동작 하나가 여러 파일을 거칠 때
+                      </h3>
+                      <blockquote className="border-l-2 border-primary pl-4">
+                        “출력값이 이상한데… 아까 그 함수에서 뭘 넘겼지?”
+                      </blockquote>
+                      <p className="text-sm">
+                        Node.js에서 이미 반환한 함수와 다른 모듈로 돌아가,
+                        지나온 흐름을 이어서 살펴보세요.
+                      </p>
+                    </article>
+                    <article className="grid content-start gap-4">
+                      <h3 className="font-semibold">
+                        화면의 버그를 작은 코드로 좁혔을 때
+                      </h3>
+                      <blockquote className="border-l-2 border-primary pl-4">
+                        “이 데이터는 걸러져야 하는데, 왜 남았지?”
+                      </blockquote>
+                      <p className="text-sm">
+                        문제의 데이터와 함수를 Console에 넣고, 지나친 조건으로
+                        돌아가 확인하세요.
+                      </p>
+                    </article>
+                  </div>
+                </details>
                 <details className="collapse collapse-arrow border border-base-300">
                   <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
                     재실행 방식과 지원 범위

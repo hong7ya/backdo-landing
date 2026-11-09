@@ -4,6 +4,7 @@ import playSampleWEBM from "../assets/playSample.webm";
 export default function Video() {
   return (
     <video
+      className="h-auto w-full"
       width="938"
       height="608"
       controls
