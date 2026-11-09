@@ -26,6 +26,8 @@ Console은 `devtools_app.html`, Node는 `js_app.html`에 입력한 `port`를 전
 
 React 19, Vite 6, Tailwind CSS 4, daisyUI 5를 사용합니다. 화면은 daisyUI의 CSS 클래스와 Tailwind 유틸리티를 조합하며, 현재 테마는 `nord`입니다. daisyUI는 컴포넌트 스타일 외에도 테마 색상·모서리 등의 유틸리티를 제공합니다. [daisyUI 사용법](https://daisyui.com/docs/use/), [유틸리티와 변수](https://daisyui.com/docs/utilities/)
 
+간격은 관계에 따라 구분합니다. 라벨·입력·도움말 사이는 8px, 제목과 내용 묶음 사이는 16px, 실행 단계·폼 구역 사이는 24px, 소개·폼·영상 사이는 32px입니다. 한 부모의 `gap`으로 간격을 관리해 자식의 패딩이 중복되지 않게 합니다. 폼 안쪽 여백은 작은 화면에서 16px, 넓은 화면에서 24px입니다. 터미널의 상하·오른쪽 여백과 펼친 안내의 좌우·하단 여백은 16px입니다.
+
 ```sh
 npm ci
 npm run dev

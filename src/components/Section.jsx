@@ -3,26 +3,26 @@ function SectionWrapper({ children }) {
     <section>
       <div className="hero min-h-[calc(100vh-72px)]">
         <div className="hero-content w-full">
-          <div className="min-w-0 w-full">{children}</div>
+          <div className="grid min-w-0 w-full gap-8">{children}</div>
         </div>
       </div>
     </section>
   );
 }
 
-function SectionTop({ title, description, padding }) {
+function SectionTop({ title, description }) {
   return (
-    <>
+    <div className="grid gap-4">
       <h1 className="text-4xl font-bold break-keep text-primary sm:text-5xl">
         {title}
       </h1>
-      <p className={padding ? "py-6" : ""}>{description}</p>
-    </>
+      <p>{description}</p>
+    </div>
   );
 }
 
-function SectionContent({ content, padding }) {
-  return <div className={padding ? "py-6" : ""}>{content}</div>;
+function SectionContent({ content }) {
+  return content;
 }
 
 const Section = {

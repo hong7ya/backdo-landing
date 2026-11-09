@@ -22,12 +22,8 @@ function App() {
                 <span className="text-info">단축</span>해요. 🚴
               </>
             }
-            padding={true}
           />
-          <Section.Content
-            content={<ConnectionForm />}
-            padding={true}
-          />
+          <Section.Content content={<ConnectionForm />} />
           <Section.Content content={<Video />} />
         </Section.Wrapper>
       </main>
