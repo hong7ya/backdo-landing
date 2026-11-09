@@ -1,15 +1,19 @@
-import Section from "./components/Section";
+import { useState } from "react";
+
+import ConnectionForm from "./components/ConnectionForm";
 import Guide from "./components/Guide";
 import Logo from "./components/Logo";
+import Section from "./components/Section";
 import Video from "./components/Video";
-import WebSocketForm from "./components/WebSocketForm";
 
 function App() {
+  const [mode, setMode] = useState("console");
+
   return (
     <>
       <header className="h-[72px] px-3 py-1 flex items-center">
         <Logo />
-        <Guide />
+        <Guide mode={mode} />
       </header>
       <main>
         <Section.Wrapper>
@@ -26,7 +30,15 @@ function App() {
             }
             padding={true}
           />
-          <Section.Content content={<WebSocketForm />} padding={true} />
+          <Section.Content
+            content={
+              <ConnectionForm
+                mode={mode}
+                onModeChange={setMode}
+              />
+            }
+            padding={true}
+          />
           <Section.Content content={<Video />} />
         </Section.Wrapper>
       </main>
