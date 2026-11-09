@@ -1,4 +1,11 @@
-export default function ConnectionForm({ mode, onModeChange }) {
+import { useState } from "react";
+
+import Guide from "./Guide";
+
+export default function ConnectionForm() {
+  const [mode, setMode] = useState("console");
+  const modeLabel = mode === "console" ? "Console" : "Node.js";
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -11,7 +18,7 @@ export default function ConnectionForm({ mode, onModeChange }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-box border border-base-300 bg-base-100 p-6 text-base-content"
+      className="grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 text-base-content sm:p-6"
     >
       <fieldset className="fieldset">
         <legend className="fieldset-legend">디버깅 모드</legend>
@@ -22,7 +29,7 @@ export default function ConnectionForm({ mode, onModeChange }) {
               name="mode"
               value="console"
               checked={mode === "console"}
-              onChange={(event) => onModeChange(event.target.value)}
+              onChange={(event) => setMode(event.target.value)}
               className="radio radio-primary"
             />
             Console (Chrome)
@@ -33,14 +40,18 @@ export default function ConnectionForm({ mode, onModeChange }) {
               name="mode"
               value="node"
               checked={mode === "node"}
-              onChange={(event) => onModeChange(event.target.value)}
+              onChange={(event) => setMode(event.target.value)}
               className="radio radio-primary"
             />
             Node.js
           </label>
         </div>
       </fieldset>
-      <div className="fieldset">
+      <Guide mode={mode} />
+      <div className="fieldset border-t border-base-300 pt-4">
+        <h3 className="text-base font-semibold">
+          {mode === "console" ? "2" : "3"}. 터미널에 안내된 포트로 연결
+        </h3>
         <label
           className="fieldset-legend"
           htmlFor="debugging-port"
@@ -64,23 +75,22 @@ export default function ConnectionForm({ mode, onModeChange }) {
             type="submit"
             className="btn btn-primary"
           >
-            연결
+            {modeLabel} 연결
           </button>
         </div>
         <p
           id="port-help"
           className="fieldset-label"
         >
-          터미널에 안내된 디버깅 포트를 직접 입력하세요.
+          준비한 {modeLabel} 대상의 디버깅 포트를 입력하세요. 포트 입력만으로
+          실행 대상이 생성되지는 않습니다.
         </p>
+        {mode === "console" && (
+          <p className="text-sm">
+            연결 후 열린 화면의 Console에 JavaScript를 입력하세요.
+          </p>
+        )}
       </div>
-      <p className="text-sm">
-        먼저 서버에서 <code>npm run start:{mode}</code>를 실행하세요.
-        {mode === "node" &&
-          " 사용자 프로젝트에서도 안내된 Node 명령을 실행하세요."}{" "}
-        선택한 모드와 같은 포트로 대상을 준비해야 합니다. 포트 입력만으로 실행
-        대상이 생성되지는 않습니다. 자세한 순서는 Guide에서 확인하세요.
-      </p>
     </form>
   );
 }
