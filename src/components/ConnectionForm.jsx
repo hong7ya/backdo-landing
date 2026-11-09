@@ -102,8 +102,7 @@ export default function ConnectionForm() {
             id="port-help"
             className="fieldset-label"
           >
-            준비한 {modeLabel} 대상의 디버깅 포트를 입력하세요. 포트 입력만으로
-            실행 대상이 생성되지는 않습니다.
+            실행 중인 {modeLabel} 대상과 같은 포트를 입력하세요.
           </p>
           {mode === "console" && (
             <p>연결 후 열린 화면의 Console에 JavaScript를 입력하세요.</p>
