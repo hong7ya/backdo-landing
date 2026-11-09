@@ -1,18 +1,28 @@
+import CopyButton from "./CopyButton";
+
 function Step({ title, command, description }) {
   return (
-    <article className="grid min-w-0 gap-3 md:grid-cols-3">
+    <article className="grid min-w-0 gap-3 md:grid-cols-3 md:items-start">
       <div>
         <h3 className="font-semibold">{title}</h3>
         <p className="mt-2 text-sm">{description}</p>
       </div>
       <div className="mockup-code min-w-0 w-full md:col-span-2">
+        <CopyButton
+          key={command}
+          text={command}
+          label={`${title} 명령`}
+          className="absolute top-2.5 right-3"
+        />
         {command.split("\n").map((line) => (
           <pre
             data-prefix="$"
             key={line}
-            className="whitespace-pre-wrap break-all"
+            className="flex before:shrink-0"
           >
-            <code>{line}</code>
+            <code className="min-w-0 flex-1 whitespace-pre-wrap break-all">
+              {line}
+            </code>
           </pre>
         ))}
       </div>
@@ -26,7 +36,7 @@ export default function Guide({ mode }) {
   return (
     <>
       <details className="collapse collapse-arrow border border-base-300 bg-base-200">
-        <summary className="collapse-title text-sm font-semibold">
+        <summary className="collapse-title flex! items-center text-sm font-semibold after:top-1/2!">
           처음 사용한다면: 로컬 서버 설치
         </summary>
         <div className="collapse-content">
@@ -66,7 +76,7 @@ export default function Guide({ mode }) {
           />
         )}
         <details className="collapse collapse-arrow border border-base-300 bg-base-200">
-          <summary className="collapse-title text-sm font-semibold">
+          <summary className="collapse-title flex! items-center text-sm font-semibold after:top-1/2!">
             다른 디버깅 포트 사용하기
           </summary>
           <div className="collapse-content">
