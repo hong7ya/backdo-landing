@@ -47,7 +47,7 @@ export default function Guide({ mode }) {
             command={
               "git clone https://github.com/hong7ya/backdo-server.git\ncd backdo-server\nnpm ci"
             }
-            description="Node.js 22.11.0 환경에서 설치하세요. 이미 설치했다면 아래 실행 단계로 진행하세요."
+            description="Node.js 22.11.0 환경에서 설치하세요."
           />
         </div>
       </details>
@@ -67,15 +67,15 @@ export default function Guide({ mode }) {
             command={`npm run start:${mode}`}
             description={
               isNode
-                ? "서버 저장소의 터미널에서 실행하세요. 사용자 프로젝트에서 실행할 Node 명령과 디버깅 포트를 안내합니다."
-                : "서버 저장소의 터미널에서 실행하세요. Console 전용 Chrome이 준비되면 안내된 디버깅 포트를 확인하세요."
+                ? "사용자 프로젝트에서 실행할 명령과 디버깅 포트를 안내합니다."
+                : "전용 Chrome이 준비되면 안내된 디버깅 포트를 확인하세요."
             }
           />
           {isNode && (
             <Step
               title="2. 사용자 프로젝트에서 실행"
               command="node --inspect-brk=127.0.0.1:9229 ./your-file.js"
-              description="별도 터미널에서 디버깅할 프로젝트로 이동해 실행하세요. your-file.js를 실행할 파일로 바꾸고, 서버가 안내한 포트를 사용하세요."
+              description="별도 터미널에서 실행하세요. 파일명과 서버가 안내한 포트로 바꿔주세요."
             />
           )}
           <details className="collapse collapse-arrow border border-base-300 bg-base-200">
