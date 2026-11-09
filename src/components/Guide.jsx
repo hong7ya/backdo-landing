@@ -2,12 +2,12 @@ import CopyButton from "./CopyButton";
 
 function Step({ title, command, description }) {
   return (
-    <article className="grid min-w-0 gap-4 md:grid-cols-3 md:items-start md:gap-6">
+    <article className="grid min-w-0 gap-4 lg:grid-cols-3 lg:items-start lg:gap-6">
       <div>
         <h3 className="font-semibold">{title}</h3>
         <p className="mt-2 text-sm">{description}</p>
       </div>
-      <div className="mockup-code grid min-w-0 w-full grid-cols-[1fr_auto] items-center gap-y-4 py-4 leading-6 before:mb-0 md:col-span-2">
+      <div className="mockup-code grid min-w-0 w-full grid-cols-[1fr_auto] items-center gap-y-4 py-4 leading-6 before:mb-0 lg:col-span-2">
         <CopyButton
           key={command}
           text={command}
