@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import Guide from "./Guide";
 
+const MODES = [
+  { value: "console", label: "Console (Chrome)" },
+  { value: "node", label: "Node.js" },
+];
+
 export default function ConnectionForm() {
   const [mode, setMode] = useState("console");
+  const tabRefs = useRef({});
   const modeLabel = mode === "console" ? "Console" : "Node.js";
+
+  function handleTabKeyDown(event) {
+    const adjacentMode = mode === "console" ? "node" : "console";
+    const nextMode = {
+      ArrowLeft: adjacentMode,
+      ArrowRight: adjacentMode,
+      Home: "console",
+      End: "node",
+    }[event.key];
+    if (!nextMode) return;
+    event.preventDefault();
+    setMode(nextMode);
+    tabRefs.current[nextMode].focus();
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,47 +38,46 @@ export default function ConnectionForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 text-base-content sm:p-6"
+      className="min-w-0 text-base-content"
     >
-      <fieldset className="fieldset gap-2 p-0 text-sm">
-        <legend className="fieldset-legend mb-2 p-0">디버깅 모드</legend>
-        <div className="flex flex-wrap gap-6">
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="mode"
-              value="console"
-              checked={mode === "console"}
-              onChange={(event) => setMode(event.target.value)}
-              className="radio radio-primary"
-            />
-            Console (Chrome)
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="mode"
-              value="node"
-              checked={mode === "node"}
-              onChange={(event) => setMode(event.target.value)}
-              className="radio radio-primary"
-            />
-            Node.js
-          </label>
-        </div>
-      </fieldset>
-      <Guide mode={mode} />
-      <div className="grid gap-4">
-        <h3 className="text-base font-semibold">
-          {mode === "console" ? "2" : "3"}. 터미널에 안내된 포트로 연결
-        </h3>
-        <div className="fieldset gap-2 p-0 text-sm">
-          <label
-            className="fieldset-legend mb-0 p-0"
-            htmlFor="debugging-port"
+      <div
+        role="tablist"
+        aria-label="디버깅 모드"
+        className="tabs tabs-lift"
+      >
+        {MODES.map(({ value, label }) => (
+          <button
+            key={value}
+            ref={(element) => {
+              tabRefs.current[value] = element;
+            }}
+            id={`connection-tab-${value}`}
+            type="button"
+            role="tab"
+            aria-selected={mode === value}
+            aria-controls="connection-panel"
+            tabIndex={mode === value ? 0 : -1}
+            onClick={() => setMode(value)}
+            onKeyDown={handleTabKeyDown}
+            className={`tab font-semibold ${mode === value ? "z-10" : "text-base-content/80!"}`}
           >
-            디버깅 포트
-          </label>
+            {label}
+          </button>
+        ))}
+      </div>
+      <div
+        id="connection-panel"
+        role="tabpanel"
+        aria-labelledby={`connection-tab-${mode}`}
+        className={`-mt-px grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 sm:p-6 ${mode === "console" ? "rounded-tl-none" : ""}`}
+      >
+        <Guide mode={mode} />
+        <div className="fieldset gap-2 p-0 text-sm">
+          <h3 className="text-base font-semibold">
+            <label htmlFor="debugging-port">
+              {mode === "console" ? "2" : "3"}. 터미널에 안내된 포트로 연결
+            </label>
+          </h3>
           <div className="flex flex-col gap-2 sm:flex-row">
             <input
               id="debugging-port"
