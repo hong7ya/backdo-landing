@@ -78,22 +78,6 @@ export default function Guide({ mode }) {
               description="별도 터미널에서 실행하세요. 파일명과 서버가 안내한 포트로 바꿔주세요."
             />
           )}
-          <details className="collapse collapse-arrow border border-base-300 bg-base-200">
-            <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
-              다른 디버깅 포트 사용하기
-            </summary>
-            <div className="collapse-content">
-              <Step
-                title="BackDo 서버에서 포트 지정"
-                command={`npm run start:${mode} -- --port 9333`}
-                description={
-                  isNode
-                    ? "사용자 프로젝트의 Node 명령에도 9333을 사용하고, 아래 입력란에 같은 포트를 입력하세요."
-                    : "이 명령으로 준비한 Chrome의 포트를 아래 입력란에 입력하세요."
-                }
-              />
-            </div>
-          </details>
         </div>
       </section>
     </>
