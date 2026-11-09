@@ -6,7 +6,7 @@ import Video from "./components/Video";
 function App() {
   return (
     <>
-      <header className="h-[72px] px-3 py-1 flex items-center">
+      <header className="mx-auto flex h-[72px] max-w-7xl items-center gap-2 px-4">
         <Logo />
       </header>
       <main>
