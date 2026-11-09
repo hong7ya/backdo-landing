@@ -20,7 +20,11 @@ export default function ConnectionForm() {
       Home: "console",
       End: "node",
     }[event.key];
-    if (!nextMode) return;
+
+    if (!nextMode) {
+      return;
+    }
+
     event.preventDefault();
     setMode(nextMode);
     tabRefs.current[nextMode].focus();
@@ -28,10 +32,13 @@ export default function ConnectionForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const form = new FormData(event.currentTarget);
     const entry = mode === "console" ? "devtools_app.html" : "js_app.html";
     const url = new URL(entry, import.meta.env.VITE_BACKDO_FRONTEND_URL);
+
     url.searchParams.set("port", String(Number(form.get("port"))));
+
     window.open(url.href, "_blank", "noopener,noreferrer");
   }
 

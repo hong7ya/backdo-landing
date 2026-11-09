@@ -4,8 +4,12 @@ export default function CopyButton({ text, label = "텍스트", className = "" }
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    if (!status) return;
+    if (!status) {
+      return;
+    }
+
     const timeout = setTimeout(() => setStatus(""), 2000);
+
     return () => clearTimeout(timeout);
   }, [status]);
 
