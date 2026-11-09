@@ -32,8 +32,10 @@ function App() {
                   <span className="text-info">단축</span>해요. 🚴
                 </p>
                 <p>
-                  BackDo가 실행 위치를 기록하고, 거꾸로가기를 누르면 프로그램을
-                  새로 시작해 기록된 이전 위치까지 다시 실행해요.
+                  Resume으로 지나쳤든, Step으로 진행했든. 돌아갈 위치를 미리
+                  준비하지 않아도,
+                  <br />
+                  버튼 한 번으로 이전 실행 위치를 다시 살펴볼 수 있습니다.
                 </p>
               </div>
             }
@@ -81,6 +83,10 @@ function App() {
                     재실행 방식과 지원 범위
                   </summary>
                   <div className="collapse-content grid gap-4 text-sm">
+                    <p>
+                      BackDo가 실행 위치를 기록하고, 거꾸로가기를 누르면
+                      프로그램을 새로 시작해 기록된 이전 위치까지 다시 실행해요.
+                    </p>
                     <p>
                       재실행해도 파일·DB 변경은 되돌아가지 않으며, 외부 요청이나
                       쓰기가 반복될 수 있어요.
