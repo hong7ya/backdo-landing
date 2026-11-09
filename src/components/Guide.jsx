@@ -38,7 +38,7 @@ export default function Guide({ mode }) {
   return (
     <>
       <details className="collapse collapse-arrow border border-base-300 bg-base-200">
-        <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
+        <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2! focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
           처음 사용한다면: 로컬 서버 설치
         </summary>
         <div className="collapse-content">

@@ -46,7 +46,7 @@ function App() {
                 className="grid gap-4"
               >
                 <details className="collapse collapse-arrow border border-base-300">
-                  <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
+                  <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2! focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
                     <h2 id="scenarios-heading">이럴 때 사용해 보세요</h2>
                   </summary>
                   <div className="collapse-content grid gap-6 lg:grid-cols-2">
@@ -77,7 +77,7 @@ function App() {
                   </div>
                 </details>
                 <details className="collapse collapse-arrow border border-base-300">
-                  <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2!">
+                  <summary className="collapse-title flex! min-h-0 items-center text-sm font-semibold after:top-1/2! focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary">
                     재실행 방식과 지원 범위
                   </summary>
                   <div className="collapse-content grid gap-4 text-sm">
