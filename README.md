@@ -43,10 +43,10 @@ Vite가 터미널에 출력한 실제 주소를 엽니다. 프론트 화면 서�
 
 디버깅 화면 기준 주소는 `VITE_BACKDO_FRONTEND_URL`로 지정합니다.
 
-| 실행 | 설정 | 프론트 기준 주소 |
-| --- | --- | --- |
-| `npm run dev` | `.env.development` | `http://localhost:8000/out/Default/gen/front_end/` |
-| `npm run build` | `.env.production` | `https://backdo.site/gen/front_end/` |
+| 실행            | 설정               | 프론트 기준 주소                                   |
+| --------------- | ------------------ | -------------------------------------------------- |
+| `npm run dev`   | `.env.development` | `http://localhost:8000/out/Default/gen/front_end/` |
+| `npm run build` | `.env.production`  | `https://backdo.site/gen/front_end/`               |
 
 개발 주소는 `.env.development` 한 곳에서 관리합니다. 프론트 저장소 루트를 제공하는 8000 서버를 기준으로 하며, 화면 서버의 경로가 다르면 이 파일의 기준 주소를 맞춥니다. 마지막 `/`를 포함합니다. 다른 저장소의 빌드나 서버 실행을 대신하지 않습니다. [Vite의 모드별 환경 설정](https://v6.vite.dev/guide/env-and-mode)
 
