@@ -3,29 +3,52 @@ import { useRef, useState } from "react";
 import Guide from "./Guide";
 
 const MODES = [
-  { value: "console", label: "Console (Chrome)" },
-  { value: "node", label: "Node.js" },
+  {
+    value: "console",
+    label: "Console (Chrome)",
+    name: "Console",
+    entry: "devtools_app.html",
+    port: 9222,
+    instruction: "연결 후 열린 화면의 Console에 JavaScript를 입력하세요.",
+  },
+  {
+    value: "dom",
+    label: "DOM",
+    name: "DOM",
+    entry: "inspector.html",
+    port: 9222,
+    instruction:
+      "빈 페이지에서 시작합니다. Console에 DOM을 만들고 조작하는 JavaScript를 입력하고, 왼쪽 미리보기에서 결과를 확인하세요.",
+  },
+  {
+    value: "node",
+    label: "Node.js",
+    name: "Node.js",
+    entry: "js_app.html",
+    port: 9229,
+  },
 ];
 
 export default function ConnectionForm() {
   const [mode, setMode] = useState("console");
   const tabRefs = useRef({});
-  const modeLabel = mode === "console" ? "Console" : "Node.js";
+  const modeIndex = MODES.findIndex(({ value }) => value === mode);
+  const selectedMode = MODES[modeIndex];
 
   function handleTabKeyDown(event) {
-    const adjacentMode = mode === "console" ? "node" : "console";
-    const nextMode = {
-      ArrowLeft: adjacentMode,
-      ArrowRight: adjacentMode,
-      Home: "console",
-      End: "node",
+    const nextIndex = {
+      ArrowLeft: (modeIndex - 1 + MODES.length) % MODES.length,
+      ArrowRight: (modeIndex + 1) % MODES.length,
+      Home: 0,
+      End: MODES.length - 1,
     }[event.key];
 
-    if (!nextMode) {
+    if (nextIndex === undefined) {
       return;
     }
 
     event.preventDefault();
+    const nextMode = MODES[nextIndex].value;
     setMode(nextMode);
     tabRefs.current[nextMode].focus();
   }
@@ -34,8 +57,10 @@ export default function ConnectionForm() {
     event.preventDefault();
 
     const form = new FormData(event.currentTarget);
-    const entry = mode === "console" ? "devtools_app.html" : "js_app.html";
-    const url = new URL(entry, import.meta.env.VITE_BACKDO_FRONTEND_URL);
+    const url = new URL(
+      selectedMode.entry,
+      import.meta.env.VITE_BACKDO_FRONTEND_URL
+    );
 
     url.searchParams.set("port", String(Number(form.get("port"))));
 
@@ -78,11 +103,14 @@ export default function ConnectionForm() {
         aria-labelledby={`connection-tab-${mode}`}
         className={`-mt-px grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 sm:p-6 ${mode === "console" ? "rounded-tl-none" : ""}`}
       >
-        <Guide mode={mode} />
+        <Guide
+          mode={mode}
+          label={selectedMode.name}
+        />
         <div className="fieldset gap-2 p-0 text-sm">
           <h3 className="text-base font-semibold">
             <label htmlFor="debugging-port">
-              {mode === "console" ? "2" : "3"}. 터미널에 안내된 포트로 연결
+              {mode === "node" ? "3" : "2"}. 터미널에 안내된 포트로 연결
             </label>
           </h3>
           <div className="flex flex-col gap-2 sm:flex-row">
@@ -94,7 +122,7 @@ export default function ConnectionForm() {
               max="65535"
               step="1"
               required
-              placeholder={mode === "console" ? "예: 9222" : "예: 9229"}
+              placeholder={`예: ${selectedMode.port}`}
               aria-describedby="port-help"
               className="input w-full"
             />
@@ -102,18 +130,16 @@ export default function ConnectionForm() {
               type="submit"
               className="btn btn-primary"
             >
-              {modeLabel} 연결
+              {selectedMode.name} 연결
             </button>
           </div>
           <p
             id="port-help"
             className="fieldset-label"
           >
-            실행 중인 {modeLabel} 대상과 같은 포트를 입력하세요.
+            실행 중인 {selectedMode.name} 대상과 같은 포트를 입력하세요.
           </p>
-          {mode === "console" && (
-            <p>연결 후 열린 화면의 Console에 JavaScript를 입력하세요.</p>
-          )}
+          {selectedMode.instruction && <p>{selectedMode.instruction}</p>}
         </div>
       </div>
     </form>

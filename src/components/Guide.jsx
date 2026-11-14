@@ -32,7 +32,7 @@ function Step({ title, command, description }) {
   );
 }
 
-export default function Guide({ mode }) {
+export default function Guide({ mode, label }) {
   const isNode = mode === "node";
 
   return (
@@ -59,7 +59,7 @@ export default function Guide({ mode }) {
           id="connection-guide-title"
           className="text-lg font-semibold"
         >
-          {isNode ? "Node.js" : "Console"} 연결 준비
+          {label} 연결 준비
         </h2>
         <div className="grid min-w-0 gap-6">
           <Step
