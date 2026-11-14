@@ -15,24 +15,33 @@ describe("디버깅 대상 연결", () => {
 
   it.each([
     {
+      mode: "DOM",
+      button: "DOM 연결",
+      port: "9222",
+      entry: "inspector.html",
+    },
+    {
       mode: "Console (Chrome)",
       button: "Console 연결",
-      port: "9222",
+      port: "9333",
       entry: "devtools_app.html",
     },
     {
       mode: "Node.js",
       button: "Node.js 연결",
-      port: "9333",
+      port: "9339",
       entry: "js_app.html",
     },
   ])(
-    "$mode 선택 후 입력한 포트로 해당 DevTools를 연다",
+    "$mode에서 입력한 포트로 해당 DevTools를 연다",
     async ({ mode, button, port, entry }) => {
       const user = userEvent.setup();
       render(<ConnectionForm />);
 
-      await user.click(screen.getByRole("tab", { name: mode }));
+      // DOM은 탭을 선택하지 않아도 바로 연결할 수 있어야 한다.
+      if (mode !== "DOM") {
+        await user.click(screen.getByRole("tab", { name: mode }));
+      }
       await user.type(
         screen.getByRole("spinbutton", { name: /터미널에 안내된 포트로 연결/ }),
         port
@@ -63,12 +72,14 @@ describe("디버깅 대상 연결", () => {
       }
 
       await user.click(screen.getByRole("button", { name: "DOM 연결" }));
+
       expect(input).toBeInvalid();
       expect(window.open).not.toHaveBeenCalled();
 
       await user.clear(input);
       await user.type(input, "9222");
       await user.click(screen.getByRole("button", { name: "DOM 연결" }));
+
       expect(window.open).toHaveBeenCalledExactlyOnceWith(
         "https://backdo.site/gen/front_end/inspector.html?port=9222",
         "_blank",
