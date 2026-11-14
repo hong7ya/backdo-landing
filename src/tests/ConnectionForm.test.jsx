@@ -62,15 +62,15 @@ describe("디버깅 대상 연결", () => {
         await user.type(input, port);
       }
 
-      await user.click(screen.getByRole("button", { name: "Console 연결" }));
+      await user.click(screen.getByRole("button", { name: "DOM 연결" }));
       expect(input).toBeInvalid();
       expect(window.open).not.toHaveBeenCalled();
 
       await user.clear(input);
       await user.type(input, "9222");
-      await user.click(screen.getByRole("button", { name: "Console 연결" }));
+      await user.click(screen.getByRole("button", { name: "DOM 연결" }));
       expect(window.open).toHaveBeenCalledExactlyOnceWith(
-        "https://backdo.site/gen/front_end/devtools_app.html?port=9222",
+        "https://backdo.site/gen/front_end/inspector.html?port=9222",
         "_blank",
         "noopener,noreferrer"
       );

@@ -4,14 +4,6 @@ import Guide from "./Guide";
 
 const MODES = [
   {
-    value: "console",
-    label: "Console (Chrome)",
-    name: "Console",
-    entry: "devtools_app.html",
-    port: 9222,
-    instruction: "연결 후 열린 화면의 Console에 JavaScript를 입력하세요.",
-  },
-  {
     value: "dom",
     label: "DOM",
     name: "DOM",
@@ -19,6 +11,14 @@ const MODES = [
     port: 9222,
     instruction:
       "빈 페이지에서 시작합니다. Console에 DOM을 만들고 조작하는 JavaScript를 입력하고, 왼쪽 미리보기에서 결과를 확인하세요.",
+  },
+  {
+    value: "console",
+    label: "Console (Chrome)",
+    name: "Console",
+    entry: "devtools_app.html",
+    port: 9222,
+    instruction: "연결 후 열린 화면의 Console에 JavaScript를 입력하세요.",
   },
   {
     value: "node",
@@ -30,7 +30,7 @@ const MODES = [
 ];
 
 export default function ConnectionForm() {
-  const [mode, setMode] = useState("console");
+  const [mode, setMode] = useState(MODES[0].value);
   const tabRefs = useRef({});
   const modeIndex = MODES.findIndex(({ value }) => value === mode);
   const selectedMode = MODES[modeIndex];
@@ -101,7 +101,7 @@ export default function ConnectionForm() {
         id="connection-panel"
         role="tabpanel"
         aria-labelledby={`connection-tab-${mode}`}
-        className={`-mt-px grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 sm:p-6 ${mode === "console" ? "rounded-tl-none" : ""}`}
+        className={`-mt-px grid min-w-0 gap-6 rounded-box border border-base-300 bg-base-100 p-4 sm:p-6 ${modeIndex === 0 ? "rounded-tl-none" : ""}`}
       >
         <Guide
           mode={mode}
